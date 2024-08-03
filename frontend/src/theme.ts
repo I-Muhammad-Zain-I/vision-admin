@@ -1,5 +1,16 @@
+// Define types for the color tokens
+type ColorTokens = {
+  [key: number]: string;
+};
+
+type Tokens = {
+  grey: ColorTokens;
+  primary: ColorTokens;
+  secondary: ColorTokens;
+};
+
 // color design tokens export
-export const tokensDark = {
+export const tokensDark: Tokens = {
   grey: {
     0: "#ffffff", // manually adjusted
     10: "#f6f6f6", // manually adjusted
@@ -43,24 +54,48 @@ export const tokensDark = {
 };
 
 // function that reverses the color palette
-function reverseTokens(tokensDark) {
-  const reversedTokens = {};
-  Object.entries(tokensDark).forEach(([key, val]) => {
+function reverseTokens(tokens: Tokens): Tokens {
+  const reversedTokens: Tokens = { grey: {}, primary: {}, secondary: {} };
+  Object.entries(tokens).forEach(([key, val]) => {
     const keys = Object.keys(val);
     const values = Object.values(val);
     const length = keys.length;
-    const reversedObj = {};
+    const reversedObj: ColorTokens = {};
     for (let i = 0; i < length; i++) {
-      reversedObj[keys[i]] = values[length - i - 1];
+      reversedObj[parseInt(keys[i])] = values[length - i - 1];
     }
-    reversedTokens[key] = reversedObj;
+    reversedTokens[key as keyof Tokens] = reversedObj;
   });
   return reversedTokens;
 }
-export const tokensLight = reverseTokens(tokensDark);
+
+export const tokensLight: Tokens = reverseTokens(tokensDark);
+
+// Define type for theme settings function
+type ThemeMode = "light" | "dark";
+
+type ThemeSettings = {
+  palette: {
+    mode: ThemeMode;
+    primary: ColorTokens & { main: string; light: string };
+    secondary: ColorTokens & { main: string; light?: string };
+    neutral: ColorTokens & { main: string };
+    background: { default: string; alt: string };
+  };
+  typography: {
+    fontFamily: string;
+    fontSize: number;
+    h1: { fontFamily: string; fontSize: number };
+    h2: { fontFamily: string; fontSize: number };
+    h3: { fontFamily: string; fontSize: number };
+    h4: { fontFamily: string; fontSize: number };
+    h5: { fontFamily: string; fontSize: number };
+    h6: { fontFamily: string; fontSize: number };
+  };
+};
 
 // mui theme settings
-export const themeSettings = (mode) => {
+export const themeSettings = (mode: ThemeMode): ThemeSettings => {
   return {
     palette: {
       mode: mode,
