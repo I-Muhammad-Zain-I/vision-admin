@@ -36,6 +36,7 @@ import profileImage from "../assets/profile.jpeg";
 import { navItems } from "../constants/constant";
 
 type PropTypes = {
+  user: { [key: string]: string };
   drawerWidth: string;
   isNonMobile: boolean;
   isSidebarOpen: boolean;
@@ -43,6 +44,7 @@ type PropTypes = {
 };
 
 const Sidebar = ({
+  user,
   drawerWidth,
   isNonMobile,
   isSidebarOpen,
@@ -136,6 +138,50 @@ const Sidebar = ({
               </FlexBetween>
             </Box>
             <List>{listItems}</List>
+          </Box>
+          <Box>
+            <Divider />
+            <FlexBetween
+              textTransform={"none"}
+              gap={"1rem"}
+              m={"1.5rem 2rem 1rem 3rem"}
+            >
+              <Box
+                component={"img"}
+                alt="profile"
+                src={profileImage}
+                height={"30px"}
+                width={"30px"}
+                borderRadius={"50%"}
+                sx={{ objectFit: "cover" }}
+              />
+              <Box textAlign={"left"}>
+                <Typography
+                  fontWeight="bold"
+                  fontSize={"0.9rem"}
+                  sx={{
+                    color: theme.palette.secondary[100],
+                  }}
+                >
+                  {user.name}
+                </Typography>
+                <Typography
+                  fontWeight="bold"
+                  fontSize={"0.9rem"}
+                  sx={{
+                    color: theme.palette.secondary[100],
+                  }}
+                >
+                  {user.occupation}
+                </Typography>
+              </Box>
+              <SettingsOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "20px",
+                }}
+              />
+            </FlexBetween>
           </Box>
         </Drawer>
       )}

@@ -10,6 +10,11 @@ import managementRoutes from "./routes/management.route.ts";
 import salesRoutes from "./routes/sales.route.ts";
 import connectDB from "./config/db.ts";
 
+import userModel from "./models/user.model.ts";
+import productModel from "./models/product.model.ts";
+import productStatModel from "./models/productStat.model.ts";
+import { dataUser, dataProduct, dataProductStat } from "./data/index.js";
+
 const app = express();
 
 app.use(express.json());
@@ -36,5 +41,7 @@ connectDB()
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
+    // productModel.insertMany(dataProduct);
+    // productStatModel.insertMany(dataProductStat);
   })
   .catch((error) => {});

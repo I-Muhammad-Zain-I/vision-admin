@@ -4,12 +4,17 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import { useGetUserQuery } from "../redux/UserApi";
+import { RootState } from "../store";
 
-type Props = {};
+type PropTypes = {};
 
-const Layout = (props: Props) => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+const Layout = (props: PropTypes) => {
+  const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const userId = useSelector((state: RootState) => state.theme.userId);
+  const { data } = useGetUserQuery(userId);
+  console.log("data", data);
 
   return (
     <Box
@@ -18,16 +23,20 @@ const Layout = (props: Props) => {
       height={"100%"}
     >
       <Sidebar
+        user={data || {}}
         isNonMobile={isNonMobile}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
         drawerWidth={"250px"}
       />
-      <Navbar
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
-      <Outlet />
+      <Box flexGrow={1}>
+        <Navbar
+          user={data || {}}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+        <Outlet />
+      </Box>
     </Box>
   );
 };
