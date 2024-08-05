@@ -10,10 +10,16 @@ import managementRoutes from "./routes/management.route.ts";
 import salesRoutes from "./routes/sales.route.ts";
 import connectDB from "./config/db.ts";
 
+import transactionModel from "./models/transaction.model.ts";
 import userModel from "./models/user.model.ts";
 import productModel from "./models/product.model.ts";
 import productStatModel from "./models/productStat.model.ts";
-import { dataUser, dataProduct, dataProductStat } from "./data/index.js";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from "./data/index.js";
 
 const app = express();
 
@@ -43,5 +49,6 @@ connectDB()
     });
     // productModel.insertMany(dataProduct);
     // productStatModel.insertMany(dataProductStat);
+    // transactionModel.insertMany(dataTransaction);
   })
   .catch((error) => {});
