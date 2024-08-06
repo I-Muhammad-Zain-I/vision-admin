@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import Customers from "./pages/Customers";
 import Transactions from "./pages/Transactions";
 import Geography from "./pages/Geography";
+import Overview from "./pages/Overview";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "geography",
         element: <Geography />,
+      },
+      {
+        path: "overview",
+        element: <Overview />,
       },
     ],
   },

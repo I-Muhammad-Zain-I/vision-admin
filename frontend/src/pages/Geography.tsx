@@ -5,9 +5,7 @@ import Header from "../components/UI/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoData } from "../constants/geoData";
 
-type Props = {};
-
-const Geography = (props: Props) => {
+const Geography = () => {
   const theme = useTheme();
   const { data } = useGetGeographyQuery();
   console.log("data", data);

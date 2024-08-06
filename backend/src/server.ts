@@ -14,11 +14,13 @@ import transactionModel from "./models/transaction.model.ts";
 import userModel from "./models/user.model.ts";
 import productModel from "./models/product.model.ts";
 import productStatModel from "./models/productStat.model.ts";
+import overalStat from "./models/overallStat.model.ts";
 import {
   dataUser,
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from "./data/index.js";
 
 const app = express();
@@ -47,8 +49,9 @@ connectDB()
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
-    // productModel.insertMany(dataProduct);
+    // overalStat.insertMany(dataOverallStat);
     // productStatModel.insertMany(dataProductStat);
+    // productModel.insertMany(dataProduct);
     // transactionModel.insertMany(dataTransaction);
   })
   .catch((error) => {});
