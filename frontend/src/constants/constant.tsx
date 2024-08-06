@@ -117,7 +117,7 @@ const columns = [
   },
 ];
 
-const transactionsColumns = [
+const transactionHeaders = [
   {
     field: "_id",
     headerName: "ID",
@@ -148,4 +148,4 @@ const transactionsColumns = [
   },
 ];
 
-export { navItems, columns, transactionsColumns };
+export { navItems, columns, transactionHeaders };

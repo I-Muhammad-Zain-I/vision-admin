@@ -2,6 +2,7 @@ import userModel from "../models/user.model.ts";
 import productModel from "../models/product.model.ts";
 import productStatModel from "../models/productStat.model.ts";
 import transactionModel from "../models/transaction.model.ts";
+import getCountryISO3 from "country-iso-2-to-3";
 
 const getProducts = async (req: Request, res: Response) => {
   try {
@@ -73,4 +74,29 @@ const getTransactions = async (req: Request, res: Response) => {
   }
 };
 
-export { getProducts, getCustomers, getTransactions };
+const getGeography = async (req: Request, res: Response) => {
+  try {
+    const users = await userModel.find();
+    const mappedLocations = users.reduce((acc, { country }) => {
+      const countryISO3 = getCountryISO3(country);
+      if (!acc[countryISO3]) {
+        acc[countryISO3] = 0;
+      }
+      acc[countryISO3]++;
+      return acc;
+    }, {});
+
+    const formattedLocations = Object.entries(mappedLocations).map(
+      ([country, count]) => ({
+        id: country,
+        value: count,
+      })
+    );
+
+    res.status(200).json(formattedLocations);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export { getProducts, getCustomers, getTransactions, getGeography };
