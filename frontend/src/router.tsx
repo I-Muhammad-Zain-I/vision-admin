@@ -7,6 +7,11 @@ import Customers from "./pages/Customers";
 import Transactions from "./pages/Transactions";
 import Geography from "./pages/Geography";
 import Overview from "./pages/Overview";
+import Daily from "./pages/Daily";
+import Monthly from "./pages/Monthly";
+import Breakdown from "./pages/Breakdown";
+import Admins from "./pages/Admins";
+import Performance from "./pages/Performance";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +45,26 @@ const router = createBrowserRouter([
       {
         path: "overview",
         element: <Overview />,
+      },
+      {
+        path: "daily",
+        element: <Daily />,
+      },
+      {
+        path: "monthly",
+        element: <Monthly />,
+      },
+      {
+        path: "breakdown",
+        element: <Breakdown />,
+      },
+      {
+        path: "admin",
+        element: <Admins />,
+      },
+      {
+        path: "performance",
+        element: <Performance />,
       },
     ],
   },
