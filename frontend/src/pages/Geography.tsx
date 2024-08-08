@@ -8,7 +8,6 @@ import { geoData } from "../constants/geoData";
 const Geography = () => {
   const theme = useTheme();
   const { data } = useGetGeographyQuery();
-  console.log("data", data);
 
   const geoTheme = {
     axis: {

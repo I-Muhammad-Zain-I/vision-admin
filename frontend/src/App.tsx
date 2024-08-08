@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import "./App.css";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
 import { CssBaseline, ThemeProvider } from "@mui/material";

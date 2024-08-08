@@ -15,9 +15,7 @@ import { useGetProductsQuery } from "../redux/UserApi";
 import Header from "../components/UI/Header";
 import Product from "../components/Products/Product";
 
-type PropTypes = {};
-
-const Products = (props: PropTypes) => {
+const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
   console.log("data", data);

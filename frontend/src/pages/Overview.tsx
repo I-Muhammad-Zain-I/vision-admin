@@ -3,8 +3,10 @@ import { FormControl, MenuItem, InputLabel, Box, Select } from "@mui/material";
 import Header from "../components/UI/Header";
 import OverviewChart from "../components/overview/OverviewChart";
 
+type ViewType = "units" | "sales";
+
 const Overview = () => {
-  const [view, setView] = useState<"units" | "sales">("units");
+  const [view, setView] = useState<ViewType>("units");
 
   return (
     <Box m="1.5rem 2.5rem">

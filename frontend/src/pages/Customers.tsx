@@ -5,9 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Header from "../components/UI/Header";
 import { columns } from "../constants/constant";
 
-type Props = {};
-
-const Customers = (props: Props) => {
+const Customers = () => {
   const theme = useTheme();
   const { data, isLoading } = useGetCustomersQuery();
   console.log("data", data);
@@ -40,6 +38,17 @@ const Customers = (props: Props) => {
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
+          },
+          "& .MuiDataGrid-virtualScroller::-webkit-scrollbar": {
+            width: "8px",
+            height: "8px",
+          },
+          "& .MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.secondary[500],
+            borderRadius: "4px",
+          },
+          "& .MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb:hover": {
+            backgroundColor: theme.palette.secondary[300],
           },
         }}
       >

@@ -46,6 +46,17 @@ const Performance = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${theme.palette.secondary[200]} !important`,
           },
+          "& .MuiDataGrid-virtualScroller::-webkit-scrollbar": {
+            width: "8px",
+            height: "8px",
+          },
+          "& .MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.secondary[500],
+            borderRadius: "4px",
+          },
+          "& .MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb:hover": {
+            backgroundColor: theme.palette.secondary[300],
+          },
         }}
       >
         <DataGrid

@@ -7,9 +7,7 @@ import Sidebar from "../components/Sidebar";
 import { useGetUserQuery } from "../redux/UserApi";
 import { RootState } from "../store";
 
-type PropTypes = {};
-
-const Layout = (props: PropTypes) => {
+const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const userId = useSelector((state: RootState) => state.theme.userId);

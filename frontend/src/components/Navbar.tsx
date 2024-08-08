@@ -10,7 +10,7 @@ import {
 import FlexBetween from "./UI/FlexBetween";
 import { useDispatch } from "react-redux";
 import { setMode } from "../redux/themeSlice";
-import profileImage from "../assets/profile.jpeg";
+import profileImage from "../assets/profile.jpg";
 import { AppDispatch } from "../store";
 import {
   AppBar,

@@ -17,22 +17,11 @@ import {
   SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
-  HomeOutlined,
-  ShoppingCartOutlined,
-  Groups2Outlined,
-  ReceiptOutlined,
-  PublicOutlined,
-  PointOfSaleOutlined,
-  TodayOutlined,
-  CalendarMonthOutlined,
-  AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
-  PieChartOutline,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./UI/FlexBetween";
-import profileImage from "../assets/profile.jpeg";
+import profileImage from "../assets/profile.jpg";
 import { navItems } from "../constants/constant";
 
 type PropTypes = {
@@ -119,6 +108,18 @@ const Sidebar = ({
               boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
+              // scrollbarWidth: "none",
+            },
+            "& .MuiDrawer-paper::-webkit-scrollbar": {
+              width: "8px",
+              height: "8px",
+            },
+            "& .MuiDrawer-paper::-webkit-scrollbar-thumb": {
+              backgroundColor: theme.palette.secondary[500],
+              borderRadius: "4px",
+            },
+            "& .MuiDrawer-paper::-webkit-scrollbar-thumb:hover": {
+              backgroundColor: theme.palette.secondary[300],
             },
           }}
         >
@@ -127,7 +128,7 @@ const Sidebar = ({
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
                   <Typography variant="h4" fontWeight="bold">
-                    VISION-SE
+                    VISION-ADMIN
                   </Typography>
                 </Box>
                 {!isNonMobile && (
